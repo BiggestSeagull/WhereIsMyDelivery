@@ -137,7 +137,7 @@ public class Ui_City : MonoBehaviour
     // Tow the player
     private void GoTow()
     {
-        
+        TowManager.TowPlayer();
     }
 
     // Entered trigger and pressed yes

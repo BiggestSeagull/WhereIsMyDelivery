@@ -12,25 +12,28 @@ public class TowManager : MonoBehaviour
 
     private Transform NearestPoint()
     {
-        // = null needs to remove return error
         Transform toReturn = null;
 
-        Vector3 nearestPoint = new(float.MaxValue, float.MaxValue, float.MaxValue);
+        float nearestDistance = float.MaxValue;
         Vector3 playerPosition = player.position;
 
-        // Iterating points
         foreach (Transform point in towPoints)
         {
             Vector3 pointPosition = point.position;
-            float distanceToNearest = Vector3.Distance(pointPosition, playerPosition);
+            float distanceToPlayer = Vector3.Distance(pointPosition, playerPosition);
 
             // Check if current point closer than previous
-            if (distanceToNearest < nearestPoint.magnitude)
+            if (distanceToPlayer < nearestDistance)
             {
-                nearestPoint = pointPosition;
+                nearestDistance = distanceToPlayer;
                 toReturn = point;
             }
+            Debug.Log("foreach " + point.gameObject.name);
         }
+        if (toReturn != null)
+            Debug.Log("out " + toReturn.gameObject.name);
+        else
+            Debug.Log("out null");
 
         return toReturn;
     }
