@@ -1,0 +1,23 @@
+{
+    "idSave": 1166,
+    "isFirstSession": true,
+    "language": "en",
+    "promptDone": false,
+    "newPlayerName": "Hello!",
+    "openLevels": [
+        false,
+        true,
+        false
+    ],
+    "coins": 152,
+    "engine": 0,
+    "speed": 0,
+    "capacity": 0,
+    "maxEngine": 0,
+    "maxSpeed": 0,
+    "maxCapacity": 0,
+    "leaderboardScore": 0,
+    "isGotSkibidi": true,
+    "isEnableSkibidi": false,
+    "skibidiAdCount": 3
+}
