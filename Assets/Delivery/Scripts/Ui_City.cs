@@ -45,6 +45,7 @@ public class Ui_City : MonoBehaviour
 
     // Cursor hiding
     private bool isCursorLocked;
+    private bool canlockCursor = true; // being false when ad is showing
 
     // Start is called before the first frame update
     void Start()
@@ -77,24 +78,53 @@ public class Ui_City : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && canlockCursor)
         {
-            if (isCursorLocked)
-            {
-                // Unlocking cursor
-                isCursorLocked = false;
-
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-            else
-            {
-                isCursorLocked = true;
-
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
+            SwitchCursor();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // Unlocking cursor, web override cuz default not showing cursor, but unlocks it
+            isCursorLocked = false;
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
+
+    private void SwitchCursor()
+    {
+        if (isCursorLocked)
+        {
+            // Unlocking cursor
+            isCursorLocked = false;
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            isCursorLocked = true;
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
+    // Controlled in YandexGame script
+    public void CanLockCursor()
+    {
+        canlockCursor = true;
+    }
+    public void CannotLockCursor()
+    {
+        canlockCursor = false;
+    }
+    public void CursorLockAfterAd()
+    {
+        isCursorLocked = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Behavior depend on pressed button in Garage sub-menu of pause
