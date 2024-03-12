@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47980c58dd6e6a049be764aa96c0f020, type: 3}
   m_Name: Coin
   m_EditorClassIdentifier: 
-  name: "\u041C\u043E\u043D\u0435\u0442\u044B"
   ruName: "\u041C\u043E\u043D\u0435\u0442\u044B"
   enName: Coins
   trName: Paralar
-  weight: 0.55
+  weight: 0.5
   rewardValue: 5

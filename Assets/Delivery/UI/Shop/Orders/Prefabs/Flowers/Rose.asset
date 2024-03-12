@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47980c58dd6e6a049be764aa96c0f020, type: 3}
   m_Name: Rose
   m_EditorClassIdentifier: 
-  name: "\u0420\u043E\u0437\u044B"
   ruName: "\u0420\u043E\u0437\u044B"
   enName: Roses
   trName: "G\xFCller"
-  weight: 0.25
+  weight: 0.4
   rewardValue: 4

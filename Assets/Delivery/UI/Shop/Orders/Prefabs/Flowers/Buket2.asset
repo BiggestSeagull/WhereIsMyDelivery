@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47980c58dd6e6a049be764aa96c0f020, type: 3}
   m_Name: Buket2
   m_EditorClassIdentifier: 
-  name: "\u0411\u0443\u043A\u0435\u0442 '\u0423\u0442\u0440\u043E'"
   ruName: "\u0411\u0443\u043A\u0435\u0442 '\u0423\u0442\u0440\u043E'"
   enName: Bouquet 'Morning'
   trName: Buket 'Sabah'
-  weight: 0.75
+  weight: 0.7
   rewardValue: 8

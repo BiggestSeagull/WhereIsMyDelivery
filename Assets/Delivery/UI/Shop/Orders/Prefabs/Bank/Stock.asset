@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47980c58dd6e6a049be764aa96c0f020, type: 3}
   m_Name: Stock
   m_EditorClassIdentifier: 
-  name: "\u041F\u0430\u043A\u0435\u0442 \u0430\u043A\u0446\u0438\u0439"
   ruName: "\u041F\u0430\u043A\u0435\u0442 \u0430\u043A\u0446\u0438\u0439"
   enName: Package of stocks
   trName: Hisse senedi paketi
-  weight: 0.25
+  weight: 0.3
   rewardValue: 3

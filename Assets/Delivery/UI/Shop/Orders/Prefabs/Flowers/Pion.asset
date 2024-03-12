@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47980c58dd6e6a049be764aa96c0f020, type: 3}
   m_Name: Pion
   m_EditorClassIdentifier: 
-  name: "\u041F\u0438\u043E\u043D\u044B"
   ruName: "\u041F\u0438\u043E\u043D\u044B"
   enName: Pions
   trName: Pionlar
-  weight: 0.35
+  weight: 0.4
   rewardValue: 3
