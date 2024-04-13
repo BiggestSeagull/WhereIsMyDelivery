@@ -4076,7 +4076,7 @@ PrefabInstance:
     - target: {fileID: 2874376780016741200, guid: d951deecdde31634bac7699574013fde,
         type: 3}
       propertyPath: canControl
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3076988887397165623, guid: d951deecdde31634bac7699574013fde,
         type: 3}
@@ -6418,7 +6418,6 @@ MonoBehaviour:
   registerFirstVehicleAsPlayer: 1
   disableUIWhenNoPlayerVehicle: 0
   loadCustomizationAtFirst: 1
-  allRecorders: []
   recordMode: 0
   allVehicles: []
 --- !u!4 &1137994312

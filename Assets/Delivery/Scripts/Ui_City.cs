@@ -82,34 +82,45 @@ public class Ui_City : MonoBehaviour
         {
             SwitchCursor();
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            // Unlocking cursor, web override cuz default not showing cursor, but unlocks it
-            isCursorLocked = false;
 
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+        if(Cursor.visible == true)
+        {
+            isCursorLocked = false;
         }
+        else
+        {
+            isCursorLocked = true;
+        }
+
     }
 
     private void SwitchCursor()
     {
         if (isCursorLocked)
         {
-            // Unlocking cursor
-            isCursorLocked = false;
-
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            UnlockCursor();
         }
         else
         {
-            isCursorLocked = true;
-
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            LockCursor();
         }
     }
+    // Used when opening shop or leaving to garage or switching by button
+    public void LockCursor()
+    {
+        isCursorLocked = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+    public void UnlockCursor()
+    {
+        isCursorLocked = false;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     // Controlled in YandexGame script
     public void CanLockCursor()
     {
@@ -132,6 +143,7 @@ public class Ui_City : MonoBehaviour
     {
         if(yesNo == 0)
         {
+            LockCursor();
             OrderManager.isGoGarage = false;
             triggerGoGarageBlock.SetActive(false);
         }
@@ -174,6 +186,7 @@ public class Ui_City : MonoBehaviour
     private void ToGarageScene()
     {
         PlayerPrefs.SetInt("transFromMainScene", 1);
+        UnlockCursor();
         SceneManager.LoadScene(0);
     }
 

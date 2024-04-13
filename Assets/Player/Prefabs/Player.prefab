@@ -57,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 306027997755802779}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.273, z: 0}
+  m_LocalPosition: {x: 0, y: 0.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -326,7 +326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7245034527095936463
 Transform:
   m_ObjectHideFlags: 0
@@ -336,7 +336,7 @@ Transform:
   m_GameObject: {fileID: 1651356215911075841}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.459, z: 0}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2242,16 +2242,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   engineArray:
-  - 100
-  - 125
-  - 150
+  - 165
   - 175
   - 200
+  - 215
   - 225
+  - 235
   - 250
   - 275
-  - 300
-  - 325
+  - 315
+  - 330
   - 350
   speedArray:
   - 20
@@ -2327,7 +2327,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a315e5fc75e51394eaa3fcd6eb89ecc3,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 46.9
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a315e5fc75e51394eaa3fcd6eb89ecc3,
         type: 3}

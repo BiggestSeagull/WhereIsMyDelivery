@@ -115,33 +115,6 @@ public class RCC : MonoBehaviour {
 	public static void SetAutomaticGear(){}
 
 	///<summary>
-	/// Starts / stops to record the player vehicle.
-	///</summary>
-	public static void StartStopRecord(){
-
-		RCC_SceneManager.Instance.Record ();
-
-	}
-
-	///<summary>
-	/// Start / stops replay of the last record.
-	///</summary>
-	public static void StartStopReplay(){
-
-		RCC_SceneManager.Instance.Play ();
-
-	}
-
-	///<summary>
-	/// Stops record / replay of the last record.
-	///</summary>
-	public static void StopRecordReplay(){
-
-		RCC_SceneManager.Instance.Stop ();
-
-	}
-
-	///<summary>
 	/// Sets new behavior.
 	///</summary>
 	public static void SetBehavior(int behaviorIndex){

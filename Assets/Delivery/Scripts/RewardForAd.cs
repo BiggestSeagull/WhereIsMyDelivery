@@ -85,6 +85,11 @@ public class RewardForAd : MonoBehaviour
                         YG_Saves.SaveCoins(YG_Saves.LoadCoins() + GetManyCoins());
                         Ui_manager.ReloadPlayerCoins();
                         break;
+                    case >3:
+                        // Fix for dev account 
+                        GetSkibidi();
+                        YG_Saves.SaveSkibidiAdCount(3);
+                        break;
                 }
                 break;
         }

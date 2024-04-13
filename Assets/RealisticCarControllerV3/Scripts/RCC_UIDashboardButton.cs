@@ -78,24 +78,6 @@ public class RCC_UIDashboardButton : MonoBehaviour, IPointerClickHandler {
 
 				break;
 
-			case ButtonType.Record:
-
-				RCC.StartStopRecord();
-
-				break;
-
-			case ButtonType.Replay:
-
-				RCC.StartStopReplay();
-
-				break;
-
-			case ButtonType.Neutral:
-
-				RCC.StopRecordReplay();
-
-				break;
-
 			case ButtonType.ChangeCamera:
 
 				RCC.ChangeCamera();

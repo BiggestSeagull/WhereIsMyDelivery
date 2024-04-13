@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47980c58dd6e6a049be764aa96c0f020, type: 3}
   m_Name: Pizza
   m_EditorClassIdentifier: 
-  name: "\u041F\u0438\u0446\u0446\u0430"
   ruName: "\u041F\u0438\u0446\u0446\u0430"
   enName: Pizza
-  trName: "\u041F\u0438\u0446\u0446\u0430"
+  trName: Pizza
   weight: 0.6
   rewardValue: 6

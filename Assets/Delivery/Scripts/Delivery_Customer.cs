@@ -22,10 +22,19 @@ public class Delivery_Customer : MonoBehaviour
         if (gameObject.CompareTag("Delivery_Garage") && col.CompareTag("Player"))
         {
             UiCity.triggerGoGarageBlock.SetActive(true);
+            UiCity.UnlockCursor();
             return;
         }
 
         CompleteOrder();
+    }
+    private void OnTriggerExit(Collider col)
+    {
+        if (gameObject.CompareTag("Delivery_Garage"))
+        {
+            UiCity.triggerGoGarageBlock.SetActive(false);
+            UiCity.LockCursor();
+        }
     }
 
     private void CompleteOrder()

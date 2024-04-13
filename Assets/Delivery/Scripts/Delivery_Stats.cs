@@ -50,12 +50,11 @@ public class Delivery_Stats : MonoBehaviour
 
     private void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex != 0 | PlayerPrefs.GetInt("transFromMainScene", 0) == 1)
+        if (SceneManager.GetActiveScene().buildIndex != 0 | PlayerPrefs.GetInt("transFromMainScene", 0) == 1)
         {
             PlayerPrefs.SetInt("transFromMainScene", 0);
             GetData();
         }
-
     }
 
     // To rewrite RCC

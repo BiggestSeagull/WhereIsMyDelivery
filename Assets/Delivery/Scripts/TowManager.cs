@@ -8,6 +8,9 @@ public class TowManager : MonoBehaviour
     public void TowPlayer()
     {
         player.position = NearestPoint().position;
+        player.rotation = Quaternion.Euler(0f, player.rotation.eulerAngles.y, 0f);
+        player.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        player.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
     }
 
     private Transform NearestPoint()
@@ -28,12 +31,12 @@ public class TowManager : MonoBehaviour
                 nearestDistance = distanceToPlayer;
                 toReturn = point;
             }
-            Debug.Log("foreach " + point.gameObject.name);
+            //Debug.Log("foreach " + point.gameObject.name);
         }
-        if (toReturn != null)
-            Debug.Log("out " + toReturn.gameObject.name);
-        else
-            Debug.Log("out null");
+        //if (toReturn != null)
+        //    Debug.Log("out " + toReturn.gameObject.name);
+        //else
+        //    Debug.Log("out null");
 
         return toReturn;
     }

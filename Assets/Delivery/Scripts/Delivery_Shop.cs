@@ -111,6 +111,10 @@ public class Delivery_Shop : MonoBehaviour
             PlayerPrefs.SetInt("transFromMainScene", 0);
             GetData();
         }
+
+        // Mobile enter/exit shop buttons
+        enterShopButton.GetComponent<Button>().onClick.AddListener(delegate { EnterShop(); });
+        bgExitUI.GetComponent<Button>().onClick.AddListener(delegate { ExitShop(); });
     }
 
     // Update is called once per frame
@@ -277,7 +281,11 @@ public class Delivery_Shop : MonoBehaviour
         // Load all orders
         LoadShopUI(3);
 
-        shopDelay = .2f;
+        shopDelay = .1f;
+
+        // Cursor kostyl
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     private void ExitShop()
     {
@@ -291,7 +299,10 @@ public class Delivery_Shop : MonoBehaviour
 
         UnLoadShopUI(3);
 
-        shopDelay = .2f;
+        shopDelay = .1f;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     #endregion
 

@@ -54,10 +54,6 @@ public class RCC_EditorWindows : Editor {
 		Selection.activeObject = RCC_ChangableWheels.Instance;
 	}
 
-	[MenuItem("Tools/BoneCracker Games/Realistic Car Controller/Configure Recorded Clips", false, -65)]
-	public static void OpenRecordSettings(){
-		Selection.activeObject = RCC_Records.Instance;
-	}
 	#endregion
 
 	#region Add Cameras

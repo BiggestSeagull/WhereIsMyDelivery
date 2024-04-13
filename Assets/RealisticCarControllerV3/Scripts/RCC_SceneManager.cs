@@ -55,7 +55,6 @@ public class RCC_SceneManager : MonoBehaviour {
 	public bool disableUIWhenNoPlayerVehicle = false;
 	public bool loadCustomizationAtFirst = true;
 
-	public List <RCC_Recorder> allRecorders = new List<RCC_Recorder> ();
 	public enum RecordMode{Neutral, Play, Record}
 	public RecordMode recordMode;
 
@@ -120,35 +119,8 @@ public class RCC_SceneManager : MonoBehaviour {
 		if (!allVehicles.Contains (RCC)) {
 			
 			allVehicles.Add (RCC);
-
-			allRecorders = new List<RCC_Recorder> ();
-			allRecorders.AddRange (gameObject.GetComponentsInChildren<RCC_Recorder> ());
-
-			RCC_Recorder recorder = null;
-
-			if (allRecorders != null && allRecorders.Count > 0) {
-
-				for (int i = 0; i < allRecorders.Count; i++) {
-				
-					if (allRecorders[i] != null && allRecorders [i].carController == RCC) {
-						recorder = allRecorders [i];
-						break;
-					}
-
-				}
-
-			}
-
-			if (recorder == null) {
-				
-				recorder = gameObject.AddComponent<RCC_Recorder> ();
-				recorder.carController = RCC;
-
-			}
-
 		}
 
-		StartCoroutine(CheckMissingRecorders ());
 
 		if (registerFirstVehicleAsPlayer)
 			RegisterPlayer (RCC);
@@ -165,35 +137,8 @@ public class RCC_SceneManager : MonoBehaviour {
 		if (!allVehicles.Contains (RCCAI.carController)) {
 			
 			allVehicles.Add (RCCAI.carController);
-
-			allRecorders = new List<RCC_Recorder> ();
-			allRecorders.AddRange (gameObject.GetComponentsInChildren<RCC_Recorder> ());
-
-			RCC_Recorder recorder = null;
-
-			if (allRecorders != null && allRecorders.Count > 0) {
-
-				for (int i = 0; i < allRecorders.Count; i++) {
-
-					if (allRecorders [i] != null && allRecorders [i].carController == RCCAI.carController) {
-						recorder = allRecorders [i];
-						break;
-					}
-
-				}
-
-			}
-
-			if (recorder == null) {
-
-				recorder = gameObject.AddComponent<RCC_Recorder> ();
-				recorder.carController = RCCAI.carController;
-
-			}
-
 		}
 
-		StartCoroutine(CheckMissingRecorders ());
 
 	}
 
@@ -219,18 +164,12 @@ public class RCC_SceneManager : MonoBehaviour {
 		
 		if (allVehicles.Contains (RCC))
 			allVehicles.Remove (RCC);
-
-		StartCoroutine(CheckMissingRecorders ());
-
 	}
 
 	void RCC_AICarController_OnRCCAIDestroyed (RCC_AICarController RCCAI){
 		
 		if (allVehicles.Contains (RCCAI.carController))
 			allVehicles.Remove (RCCAI.carController);
-
-		StartCoroutine(CheckMissingRecorders ());
-
 	}
 
 	#if BCG_ENTEREXIT
@@ -259,106 +198,10 @@ public class RCC_SceneManager : MonoBehaviour {
 		if(disableUIWhenNoPlayerVehicle && activePlayerCanvas)
 			CheckCanvas ();
 
-		if (Input.GetKeyDown (RCC_Settings.Instance.recordKB))
-			RCC.StartStopRecord ();
-
-		if (Input.GetKeyDown (RCC_Settings.Instance.playbackKB))
-			RCC.StartStopReplay ();
-
-		if (Input.GetKey (RCC_Settings.Instance.slowMotionKB))
-			Time.timeScale = .2f;
-
-		if (Input.GetKeyUp (RCC_Settings.Instance.slowMotionKB))
-			Time.timeScale = orgTimeScale;
-
 		if(Input.GetButtonDown("Cancel"))
 			Cursor.lockState = CursorLockMode.None;
 
 		activeMainCamera = Camera.main;
-
-		if (allRecorders != null && allRecorders.Count > 0) {
-
-			switch (allRecorders [0].mode) {
-
-			case RCC_Recorder.Mode.Neutral:
-
-				recordMode = RecordMode.Neutral;
-
-				break;
-
-			case RCC_Recorder.Mode.Play:
-
-				recordMode = RecordMode.Play;
-
-				break;
-
-			case RCC_Recorder.Mode.Record:
-
-				recordMode = RecordMode.Record;
-
-				break;
-
-			}
-
-		}
-
-	}
-
-	public void Record(){
-
-		if (allRecorders != null && allRecorders.Count > 0) {
-
-			for (int i = 0; i < allRecorders.Count; i++)
-				allRecorders [i].Record ();
-
-		}
-
-	}
-
-	public void Play(){
-
-		if (allRecorders != null && allRecorders.Count > 0) {
-
-			for (int i = 0; i < allRecorders.Count; i++)
-				allRecorders [i].Play ();
-
-		}
-
-	}
-
-	public void Stop(){
-
-		if (allRecorders != null && allRecorders.Count > 0) {
-
-			for (int i = 0; i < allRecorders.Count; i++)
-				allRecorders [i].Stop ();
-
-		}
-
-	}
-
-	private IEnumerator CheckMissingRecorders(){
-		
-		yield return new WaitForFixedUpdate ();
-
-		allRecorders = new List<RCC_Recorder> ();
-		allRecorders.AddRange (gameObject.GetComponentsInChildren<RCC_Recorder> ());
-
-		if (allRecorders != null && allRecorders.Count > 0) {
-
-			for (int i = 0; i < allRecorders.Count; i++) {
-
-				if (allRecorders [i].carController == null)
-					Destroy (allRecorders [i]);
-
-			}
-
-		}
-		yield return new WaitForFixedUpdate ();
-
-		allRecorders = new List<RCC_Recorder> ();
-		allRecorders.AddRange (gameObject.GetComponentsInChildren<RCC_Recorder> ());
-
 	}
 
 	public void RegisterPlayer(RCC_CarControllerV3 playerVehicle){
