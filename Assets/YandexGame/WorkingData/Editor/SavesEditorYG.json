@@ -1,5 +1,5 @@
 {
-    "idSave": 1404,
+    "idSave": 1459,
     "isFirstSession": true,
     "language": "en",
     "promptDone": false,
@@ -9,15 +9,15 @@
         true,
         false
     ],
-    "coins": 158,
+    "coins": 171,
     "engine": 3,
     "speed": 0,
     "capacity": 0,
     "maxEngine": 3,
     "maxSpeed": 0,
     "maxCapacity": 0,
-    "leaderboardScore": 1,
+    "leaderboardScore": 4,
     "isGotSkibidi": true,
-    "isEnableSkibidi": false,
+    "isEnableSkibidi": true,
     "skibidiAdCount": 3
 }

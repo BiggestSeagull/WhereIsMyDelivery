@@ -36,6 +36,7 @@ public class TimerBeforeAdsYG : MonoBehaviour
             Debug.LogError("Fill in the array 'secondObjects'");
     }
 
+    [HideInInspector] public static bool shouldShowAd = false;
     IEnumerator CheckTimerAd()
     {
         bool checking = true;
@@ -43,6 +44,19 @@ public class TimerBeforeAdsYG : MonoBehaviour
         {
             if (YandexGame.timerShowAd >= YandexGame.Instance.infoYG.fullscreenAdInterval)
             {
+                // my block
+                while (!shouldShowAd)
+                {
+                    Debug.Log("We are in this thing");
+                    if (!realtimeSeconds)
+                        yield return new WaitForSeconds(1.0f);
+                    else
+                        yield return new WaitForSecondsRealtime(1.0f);
+                }
+                Debug.Log("We left this thing");
+                shouldShowAd = false;
+                // end
+
                 onShowTimer?.Invoke();
                 objSecCounter = 0;
                 if (secondsPanelObject)
