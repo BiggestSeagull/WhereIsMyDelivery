@@ -44,16 +44,15 @@ public class TimerBeforeAdsYG : MonoBehaviour
         {
             if (YandexGame.timerShowAd >= YandexGame.Instance.infoYG.fullscreenAdInterval)
             {
-                // my block
                 while (!shouldShowAd)
                 {
-                    Debug.Log("We are in this thing");
+                    // Debug.Log("We are in this thing");
                     if (!realtimeSeconds)
                         yield return new WaitForSeconds(1.0f);
                     else
                         yield return new WaitForSecondsRealtime(1.0f);
                 }
-                Debug.Log("We left this thing");
+                // Debug.Log("We left this thing");
                 shouldShowAd = false;
                 // end
 

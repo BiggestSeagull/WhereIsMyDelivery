@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,8 @@ public class GuideForNewbie : MonoBehaviour
             container = gameObject.transform.GetChild(0).gameObject;
             container.SetActive(true);
             pages[0].SetActive(true);
+
+            StartCoroutine(UnlockCursorOnSecondFrame()); 
         }
         else
         {
@@ -58,5 +61,13 @@ public class GuideForNewbie : MonoBehaviour
                 // Nothing to do
                 break;
         }
+    }
+
+    IEnumerator UnlockCursorOnSecondFrame()
+    {
+        yield return new WaitForEndOfFrame();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

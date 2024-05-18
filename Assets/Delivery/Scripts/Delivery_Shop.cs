@@ -409,7 +409,7 @@ public class Delivery_Shop : MonoBehaviour
     #region
     public void Take_1_order()
     {
-        if (Stats.currentWeight + thisShopOrders[0].weight > Stats.maxWeight)
+        if (Stats.currentWeight + thisShopOrders[0].weight > Stats.maxWeight + 0.08f)
         {
             Stats.Overload(0);
         }
@@ -439,7 +439,7 @@ public class Delivery_Shop : MonoBehaviour
     }
     public void Take_2_order()
     {
-        if (Stats.currentWeight + thisShopOrders[1].weight > Stats.maxWeight)
+        if (Stats.currentWeight + thisShopOrders[1].weight > Stats.maxWeight + 0.08f)
         {
             Stats.Overload(1);
         }
@@ -469,7 +469,7 @@ public class Delivery_Shop : MonoBehaviour
     }
     public void Take_3_order()
     {
-        if (Stats.currentWeight + thisShopOrders[2].weight > Stats.maxWeight)
+        if (Stats.currentWeight + thisShopOrders[2].weight > Stats.maxWeight + 0.08f)
         {
             Stats.Overload(2);
         }

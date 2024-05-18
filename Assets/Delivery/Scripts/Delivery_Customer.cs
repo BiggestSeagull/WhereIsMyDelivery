@@ -75,5 +75,7 @@ public class Delivery_Customer : MonoBehaviour
 
         // Write to Yandex leaderboard
         Leaderboard.NewWrite();
+
+        TimerBeforeAdsYG.shouldShowAd = true;
     }
 }
