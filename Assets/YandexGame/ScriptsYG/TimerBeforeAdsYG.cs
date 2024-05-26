@@ -44,6 +44,7 @@ public class TimerBeforeAdsYG : MonoBehaviour
         {
             if (YandexGame.timerShowAd >= YandexGame.Instance.infoYG.fullscreenAdInterval)
             {
+                // my lines
                 while (!shouldShowAd)
                 {
                     // Debug.Log("We are in this thing");
@@ -64,6 +65,11 @@ public class TimerBeforeAdsYG : MonoBehaviour
                 StartCoroutine(TimerAdShow());
                 yield return checking = false;
             }
+            else 
+            { 
+                if (shouldShowAd) shouldShowAd = false;  // Also my line: if YG timer isn`t up, but player had delivery, then reset shouldShowAd
+                                                         // Fixes problem
+            } 
 
             if (!realtimeSeconds)
                 yield return new WaitForSeconds(1.0f);

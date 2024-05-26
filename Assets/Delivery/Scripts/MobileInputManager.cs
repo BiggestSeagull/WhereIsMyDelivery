@@ -5,13 +5,14 @@ public class MobileInputManager : MonoBehaviour
     [SerializeField] private CanvasGroup mobileInputContainer;
     public bool testInIspector = false;
     private bool activeContainer;
-    private bool activeFireContainer = false;
     private bool mobile = false;
     private int firstCheckMobile = 0;
 
     // Cameras
     [SerializeField] private GameObject desktopCam;
     [SerializeField] private GameObject mobileCam;
+    // Guide for dumb pc players
+    [SerializeField] private GameObject dumbGuide;
 
     public void ActiveMobileContainer()
     {
@@ -53,38 +54,42 @@ public class MobileInputManager : MonoBehaviour
 
         if (isMobile)
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            mobile = true;
-            RCC_SceneManager.SetController(1);
-            PlayerPrefs.SetInt("isMobile", 1);
-
-            mobileCam.SetActive(true); 
-            desktopCam.SetActive(false);
+            ActionIfMobile();
             return true;
         }
         else
         {
             if (testInIspector)
             {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                mobile = true;
-                RCC_SceneManager.SetController(1);
-                PlayerPrefs.SetInt("isMobile", 1);
-
-                mobileCam.SetActive(true);
-                desktopCam.SetActive(false);
+                ActionIfMobile();
                 return true;
             }
 
-            RCC_SceneManager.SetController(0);
-            PlayerPrefs.SetInt("isMobile", 0);
-            mobile = testInIspector;
-
-            mobileCam.SetActive(false);
-            desktopCam.SetActive(true);
+            ActionIfDesktop();
             return testInIspector;
         }
+    }
+
+    private void ActionIfMobile()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        mobile = true;
+        RCC_SceneManager.SetController(1);
+        PlayerPrefs.SetInt("isMobile", 1);
+
+        mobileCam.SetActive(true);
+        desktopCam.SetActive(false);
+        dumbGuide.SetActive(false);
+    }
+    private void ActionIfDesktop()
+    {
+        RCC_SceneManager.SetController(0);
+        PlayerPrefs.SetInt("isMobile", 0);
+        mobile = testInIspector;
+
+        mobileCam.SetActive(false);
+        desktopCam.SetActive(true);
+        dumbGuide.SetActive(true);
     }
 }

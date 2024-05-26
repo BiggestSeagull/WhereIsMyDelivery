@@ -83,6 +83,10 @@ public class Ui_manager : MonoBehaviour
     [SerializeField] private Button musicOnButton;
     [SerializeField] private Button musicOffButton;
 
+    // Casino wip
+    [SerializeField] private Spin Spin;
+    [SerializeField] private Button spinWheel;
+
     private void Awake()
     {
         MusicManager = GameObject.FindWithTag("MusicPlayer").GetComponent<MusicManager>();
@@ -101,6 +105,9 @@ public class Ui_manager : MonoBehaviour
         // Music buttons
         musicOnButton.onClick.AddListener(delegate { MusicSwitch(0); });
         musicOffButton.onClick.AddListener(delegate { MusicSwitch(1); });
+
+        // Casino
+        spinWheel.onClick.AddListener(delegate { Spin.RotateWheel(); });
 
         if (PlayerPrefs.GetInt("transFromMainScene", 0) == 1)
         {
