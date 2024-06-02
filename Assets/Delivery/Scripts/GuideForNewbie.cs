@@ -27,6 +27,7 @@ public class GuideForNewbie : MonoBehaviour
         }
         else
         {
+            Ui_City.LockCursor();
             Destroy(gameObject);
         }
 
@@ -36,16 +37,16 @@ public class GuideForNewbie : MonoBehaviour
 
     private void NextPage()
     {
-        switch (currentPage) 
+        if (currentPage < pages.Length -1)
         {
-            case <4:
-                pages[currentPage].SetActive(false);
-                currentPage++;
-                pages[currentPage].SetActive(true);
-                break;
-            case >= 4:
-                Destroy(gameObject);
-                break;
+            pages[currentPage].SetActive(false);
+            currentPage++;
+            pages[currentPage].SetActive(true);
+        }
+        else if (currentPage >= pages.Length -1)
+        {
+            Ui_City.LockCursor();
+            Destroy(gameObject);
         }
     }
     private void PreviousPage()
@@ -67,7 +68,6 @@ public class GuideForNewbie : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        Ui_City.UnlockCursor();
     }
 }

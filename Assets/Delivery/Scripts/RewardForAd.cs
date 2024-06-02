@@ -61,66 +61,24 @@ public class RewardForAd : MonoBehaviour
 
             // Money or skibidi for ad
             case skibidiId:
-                int skibidiAdCount = YG_Saves.LoadSkibidiAdCount();
-                switch (skibidiAdCount)
-                {
-                    case 0:
-                        YG_Saves.SaveSkibidiAdCount(skibidiAdCount + 1);
+                int chance = Random.Range(0, 100);
+                int threshold = 40;
+                if (chance >= threshold)
+                    YG_Saves.SaveCoins(YG_Saves.LoadCoins() + GetManyCoins());
+                else
+                    YG_Saves.SaveCoins(YG_Saves.LoadCoins() + GetLessCoins());
 
-                        YG_Saves.SaveCoins(YG_Saves.LoadCoins() + GetSkibidiChance(10));
-                        Ui_manager.ReloadPlayerCoins();
-                        break;
-                    case 1:
-                        YG_Saves.SaveSkibidiAdCount(skibidiAdCount + 1);
-
-                        YG_Saves.SaveCoins(YG_Saves.LoadCoins() + GetSkibidiChance(40));
-                        Ui_manager.ReloadPlayerCoins();
-                        break;
-                    case 2:
-                        YG_Saves.SaveSkibidiAdCount(skibidiAdCount + 1);
-
-                        GetSkibidi();
-                        break;
-                    case 3:
-                        YG_Saves.SaveCoins(YG_Saves.LoadCoins() + GetManyCoins());
-                        Ui_manager.ReloadPlayerCoins();
-                        break;
-                    case >3:
-                        // Fix for dev account 
-                        GetSkibidi();
-                        YG_Saves.SaveSkibidiAdCount(3);
-                        break;
-                }
+                Ui_manager.ReloadPlayerCoins();
                 break;
         }
     }
 
-    // Have not got skibidi, checking luck
-    private int GetSkibidiChance(int baseChance)
+    private int GetLessCoins()
     {
-        var randomChance = Random.Range(0, 101);
-
-        if (baseChance <= randomChance)
-        {
-            // Unluck
-            Immersive.CollectCoins();
-            return Random.Range(10, 20);
-        }
-        else
-        {
-            // You are lucky
-            GetSkibidi();
-            return 0;
-        }
+        Immersive.CollectCoins();
+        return Random.Range(10, 14);
     }
-    private void GetSkibidi()
-    {
-        Debug.Log("getSkibi");
-        YG_Saves.SaveIsGotSkibidi(true);
-        YG_Saves.SaveSkibidiAdCount(3);
 
-        Ui_manager.SkibidiUiControl();
-    }
     private int GetManyCoins()
     {
         Immersive.CollectCoins();

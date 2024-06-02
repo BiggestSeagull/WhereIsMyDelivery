@@ -31,10 +31,6 @@ public class Delivery_Stats : MonoBehaviour
     public GameObject[] OverloadUI; // Too much weight
     public TMP_Text WeightText;     // Shows current weight
 
-    // Is got skibidi ad reward; controlled by RewardForAd.cs
-    [HideInInspector] public bool isGotSkibidi;
-    [HideInInspector] public bool isEnabledSkibidi;
-    [SerializeField] private GameObject skibidi;
     [SerializeField] private GameObject hood;
 
     // Music
@@ -80,13 +76,6 @@ public class Delivery_Stats : MonoBehaviour
     {
         // Получаем данные из плагина и делаем с ними что хотим
         language = YandexGame.EnvironmentData.language;
-
-        if (YG_Saves.LoadIsGotSkibidi() == true)
-            isGotSkibidi = true;
-        if (YG_Saves.LoadIsEnableSkibidi() == true)
-            EnableSkibidi();
-        else
-            DisableSkibidi();
 
         if (PlayerPrefs.GetInt("music", 1) == 1)
         {
@@ -173,33 +162,5 @@ public class Delivery_Stats : MonoBehaviour
                 YG_Saves.SaveCapacity(YG_Saves.LoadCapacity() - 1);
                 break;
         }
-    }
-
-    // Skibidi script
-    public void ToggleSkibidi()
-    {
-        switch (isEnabledSkibidi)
-        {
-            case true:
-                DisableSkibidi();
-                break;
-            case false:
-                EnableSkibidi();
-                break;
-        }
-    }
-    public void EnableSkibidi()
-    {
-        isEnabledSkibidi = true;
-        YG_Saves.SaveIsEnableSkibidi(true);
-        skibidi.SetActive(true);
-        hood.SetActive(false);
-    }
-    public void DisableSkibidi()
-    {
-        isEnabledSkibidi = false;
-        YG_Saves.SaveIsEnableSkibidi(false);
-        skibidi.SetActive(false);
-        hood.SetActive(true);
     }
 }

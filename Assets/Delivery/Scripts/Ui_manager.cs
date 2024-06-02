@@ -75,9 +75,6 @@ public class Ui_manager : MonoBehaviour
     // Show all the money player have
     [SerializeField] private TMP_Text playerCoinsText;
 
-    // Skibidi toggle
-    [SerializeField] private Toggle skibidiToggle;
-
     // Music
     private MusicManager MusicManager;
     [SerializeField] private Button musicOnButton;
@@ -98,9 +95,6 @@ public class Ui_manager : MonoBehaviour
         buyButtons[0].onClick.AddListener(delegate { BuyTier(0, YG_Saves.LoadEngine()); });
         buyButtons[1].onClick.AddListener(delegate { BuyTier(1, YG_Saves.LoadSpeed()); });
         buyButtons[2].onClick.AddListener(delegate { BuyTier(2, YG_Saves.LoadCapacity()); });
-
-        // Skibidi toggle
-        skibidiToggle.onValueChanged.AddListener(delegate { Stats.ToggleSkibidi(); });
 
         // Music buttons
         musicOnButton.onClick.AddListener(delegate { MusicSwitch(0); });
@@ -143,8 +137,6 @@ public class Ui_manager : MonoBehaviour
         }
 
         ReloadPlayerCoins();
-
-        SkibidiUiControl();
 
         // Music
         MusicManager = GameObject.FindWithTag("MusicPlayer").GetComponent<MusicManager>();
@@ -526,43 +518,6 @@ public class Ui_manager : MonoBehaviour
     }
     #endregion
     
-    #region Skibidi UI control
-    public void SkibidiUiControl()
-    {
-        if (YG_Saves.LoadIsGotSkibidi() == true)
-        {
-            skibidiLogo.SetActive(false);
-            skibidiText.SetActive(false);
-
-            coinLogo.SetActive(true);
-            coinText.SetActive(true);
-
-            _lock.SetActive(false);
-        }
-        else
-        {
-            skibidiLogo.SetActive(true);
-            skibidiText.SetActive(true);
-
-            coinLogo.SetActive(false);
-            coinText.SetActive(false);
-
-            _lock.SetActive(true);
-        }
-
-        if (YG_Saves.LoadIsEnableSkibidi() == true)
-        {
-            skibidiToggle.isOn = true;
-            Stats.EnableSkibidi();
-        }
-        else
-        {
-            skibidiToggle.isOn = false;
-            Stats.DisableSkibidi();
-        }
-    }
-    #endregion
-
     public void ReloadPlayerCoins()
     {
         playerCoinsText.text = YG_Saves.LoadCoins().ToString();

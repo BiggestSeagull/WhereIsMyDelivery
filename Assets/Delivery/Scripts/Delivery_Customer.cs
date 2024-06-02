@@ -22,7 +22,7 @@ public class Delivery_Customer : MonoBehaviour
         if (gameObject.CompareTag("Delivery_Garage") && col.CompareTag("Player"))
         {
             UiCity.triggerGoGarageBlock.SetActive(true);
-            UiCity.UnlockCursor();
+            Ui_City.UnlockCursor();
             return;
         }
 
@@ -33,7 +33,7 @@ public class Delivery_Customer : MonoBehaviour
         if (gameObject.CompareTag("Delivery_Garage"))
         {
             UiCity.triggerGoGarageBlock.SetActive(false);
-            UiCity.LockCursor();
+            Ui_City.LockCursor();
         }
     }
 

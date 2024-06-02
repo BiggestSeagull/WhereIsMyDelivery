@@ -55,20 +55,6 @@ public class YG_Saves : MonoBehaviour
         return YandexGame.savesData.leaderboardScore;
     }
 
-    public static bool LoadIsGotSkibidi()
-    {
-        return YandexGame.savesData.isGotSkibidi;
-    }
-    public static bool LoadIsEnableSkibidi()
-    {
-        return YandexGame.savesData.isEnableSkibidi;
-    }
-    public static int LoadSkibidiAdCount()
-    {
-        return YandexGame.savesData.skibidiAdCount;
-    }
-
-
     public static void SaveCoins(int valueToSave)
     {
         YandexGame.savesData.coins = valueToSave;
@@ -111,23 +97,6 @@ public class YG_Saves : MonoBehaviour
     public static void SaveMaxCapacity(int val)
     {
         YandexGame.savesData.maxCapacity = val;
-        SaveProgress();
-    }
-
-    public static void SaveIsGotSkibidi(bool valueToSave)
-    {
-        YandexGame.savesData.isGotSkibidi = valueToSave;
-        SaveProgress();
-    }
-    public static void SaveIsEnableSkibidi(bool valueToSave)
-    {
-        YandexGame.savesData.isEnableSkibidi = valueToSave;
-        SaveProgress();
-    }
-    public static void SaveSkibidiAdCount(int valueToSave)
-    {
-        Debug.Log("aleeeee" + valueToSave);
-        YandexGame.savesData.skibidiAdCount = valueToSave;
         SaveProgress();
     }
 

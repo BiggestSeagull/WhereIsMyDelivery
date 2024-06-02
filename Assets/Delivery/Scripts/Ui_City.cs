@@ -44,7 +44,7 @@ public class Ui_City : MonoBehaviour
     [Space(15)]
 
     // Cursor hiding
-    private bool isCursorLocked;
+    private static bool isCursorLocked;
     private bool canlockCursor = true; // being false when ad is showing
 
     // Start is called before the first frame update
@@ -106,14 +106,14 @@ public class Ui_City : MonoBehaviour
         }
     }
     // Used when opening shop or leaving to garage or switching by button
-    public void LockCursor()
+    public static void LockCursor()
     {
         isCursorLocked = true;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-    public void UnlockCursor()
+    public static void UnlockCursor()
     {
         isCursorLocked = false;
 
